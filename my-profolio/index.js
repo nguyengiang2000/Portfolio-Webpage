@@ -4,7 +4,7 @@
 
   Name: Nguyen Giang
   Date: Oct 26, 2024
-  This is the index.html page for my portfolio of web development work.
+  This is the index.js page for my portfolio of web development work.
  */
 
 function setDarkMode(){

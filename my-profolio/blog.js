@@ -4,7 +4,7 @@
 
   Name: Nguyen Giang
   Date: Oct 26, 2024
-  This is the blog.html page for my portfolio of web development work.
+  This is the blog.js page for my portfolio of web development work.
  */
 async function getRandomData(){
     try {
@@ -30,7 +30,7 @@ async function getRandomData(){
         newH4.textContent = user1 + ', (' + user1_gender + ") live in " + user1_place;
         
         // non trivial element
-        document.getElementById("follower").appendChild(newH4);
+        document.getElementById("creativeBox").appendChild(newH4);
 
     } catch (error) {
         console.error(error);
@@ -38,7 +38,7 @@ async function getRandomData(){
 }
 
 function deleteButton() {
-    const followerDiv = document.getElementById("follower");
+    const followerDiv = document.getElementById("creativeBox");
     const h4Elements = followerDiv.querySelectorAll("h4"); 
 
     h4Elements.forEach(h4 => {
@@ -55,7 +55,7 @@ function deleteContent() {
             deleteButton(); 
             deleteNotify();
             resolve();
-        }, 5000); 
+        }, 2000); 
     });
 }
 
