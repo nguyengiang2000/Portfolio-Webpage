@@ -108,15 +108,31 @@ body {
     color: white;
 }
 
-.blackIntro {
+
+.addBorder {
+    border: black solid 10px;
+}
+
+#myButton{
+    font-size: 1em;    
+}
+
+#blackIntro {
     margin: 10px auto; 
     margin-top: 50px;  
     height: auto;
-    background-color: black; 
     padding: 100px; 
-    color: white;
     font-family: 'Roboto', sans-serif;
+    background-color: black;
+    color: white;
+
+
 }
+
+#ThinkOutSide{
+    padding: 400px;
+}
+
 
 .contactBlock {
     margin: 10px auto;  
@@ -247,6 +263,7 @@ body {
     text-align: center;
     
 }
+
 
 
 footer {
