@@ -23,15 +23,22 @@ window.addEventListener('load', function() {
             const user1 = `${users[0].name.first}`;
             const user1_gender = `${users[0].gender}`;
             const user1_place = `${users[0].location.state}`;
+            const user1_avatar = `${users[0].picture.large}`;
+
 
             // non-trivial element
             const newH4 = document.createElement("h4");
+            const newImg = document.createElement("img");
 
             // non-trivial element
+            newImg.src = user1_avatar;
             newH4.textContent = user1 + ', (' + user1_gender + ") lives in " + user1_place;
+
 
             // non-trivial element
             document.getElementById("creativeBox").appendChild(newH4);
+            document.getElementById("creativeBox").appendChild(newImg);
+
 
         } catch (error) {
             console.error(error);
@@ -41,9 +48,15 @@ window.addEventListener('load', function() {
     function deleteButton() {
         const followerDiv = document.getElementById("creativeBox");
         const h4Elements = followerDiv.querySelectorAll("h4"); 
+        const imgElements = followerDiv.querySelectorAll("img"); 
+
 
         h4Elements.forEach(h4 => {
             h4.remove();
+        });
+
+        imgElements.forEach(img => {
+            img.remove();
         });
     }
         
