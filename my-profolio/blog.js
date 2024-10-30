@@ -7,15 +7,22 @@
  */
 
 window.addEventListener('load', function() {
+    /**
+ * Fetches random user data from the Random User API and displays it.
+ * This function uses the "RandomData" element to display the user's name, gender, location, and avatar.
+ * If the API call is successful, the data is appended as an `h4` element and an `img` element in the "creativeBox" container.
+ *
+ * @async
+ * @function getRandomData
+ * @throws {Error} Logs any error that occurs during the API call or data processing.
+ */
     async function getRandomData() {
         try {
             const userNameElement = document.getElementById("RandomData");
             const response = await fetch("https://randomuser.me/api/?results=1&nat=US");
 
             // statusCheck
-            if (!response.ok) {
-                throw new Error(await response.text());        
-            }
+            await statusCheck(response);
 
             const data = await response.json();
             const users = data.results;
@@ -45,6 +52,13 @@ window.addEventListener('load', function() {
         }
     }
 
+/**
+ * Removes all `h4` and `img` elements from the "creativeBox" container.
+ * This function is called when user data needs to be cleared from the container.
+ *
+ * @function deleteButton
+ */ 
+
     function deleteButton() {
         const followerDiv = document.getElementById("creativeBox");
         const h4Elements = followerDiv.querySelectorAll("h4"); 
@@ -61,6 +75,12 @@ window.addEventListener('load', function() {
     }
         
     // second async / promised
+/**
+ * Deletes all content from "creativeBox" after a delay, with user confirmation via alert.
+ * This function calls `deleteButton` to remove elements and `deleteNotify` to confirm deletion.
+ *
+ * @function deleteContent
+ */    
     function deleteContent() {
         return new Promise((resolve) => {
             alert("All characters will be removed. Please wait for a while!");
@@ -71,7 +91,13 @@ window.addEventListener('load', function() {
             }, 2000); 
         });
     }
-
+    
+/**
+ * Deletes all content from "creativeBox" after a delay, with user confirmation via alert.
+ * This function calls `deleteButton` to remove elements and `deleteNotify` to confirm deletion.
+ *
+ * @function deleteNotify
+ */ 
     // third async / promised
     function deleteNotify() {
         return new Promise((resolve) => {
@@ -80,6 +106,22 @@ window.addEventListener('load', function() {
                 resolve();
             }, 500); 
         });
+    }
+
+/**
+ * Checks if the API response is valid.
+ * Throws an error if the response is not OK, including the response text as the error message.
+ *
+ * @async
+ * @function statusCheck
+ * @param {Response} res - The fetch API response object to check.
+ * @throws {Error} Throws an error if the response status is not OK.
+ */
+    async function statusCheck(res){
+        if(!res.ok){
+            throw new Error(await res.text());
+        }
+        return res;
     }
 
     const fetchDataButton = document.getElementById("generateButton");
