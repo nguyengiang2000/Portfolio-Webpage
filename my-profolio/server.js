@@ -1,3 +1,10 @@
+/** 
+  Name: Nguyen Giang
+  Date: Nov 11, 2024
+  This is the server.js.
+**/
+
+
 "use strict";
 
 const sqlite3 = require("sqlite3");
@@ -5,7 +12,7 @@ const sqlite = require("sqlite");
 const express = require("express");
 
 const app = express();
-const port = 3000;
+const port = 8000;
 
 // Function to establish a connection to the SQLite database
 async function getDBConnection() {
@@ -82,7 +89,7 @@ app.get("/allbooks/author=:author_id", async (req, res) => {
         `, [author_id]);
 
         if (books.length === 0) {
-            return res.status(404).send("No books found for the given author.");
+            return res.status(404).send("No books found for the given author or the given author does not exist.");
         }
 
         // formatting the response text
@@ -105,12 +112,12 @@ app.get("/allbooks/author=:author_id", async (req, res) => {
 async function addNewBook(title, publishedDate, authorId, characterId) {
     const db = await getDBConnection();
     try {
-        // Author and Character IDs can't be null for a book
+        // Author and Character IDs can't be null for new book
         if (!authorId || !characterId) {
             throw new Error("Both author_id and character_id are required and cannot be null.");
         }
 
-        //  check if these IDs exist in their tables ( 1 mean exist )
+        //  check if these IDs exist in their respective tables ( 1 mean exist )
         const authorExists = await db.get("SELECT 1 FROM author WHERE author_id = ?", [authorId]);
         const characterExists = await db.get("SELECT 1 FROM character WHERE character_id = ?", [characterId]);
 
@@ -140,7 +147,7 @@ async function addNewBook(title, publishedDate, authorId, characterId) {
 async function initialize() {
     try {
         // Add a new book to the database
-        await addNewBook("New Book", "11/11/2024", 1, 3);
+        await addNewBook("The Worm Galaxy", "12/10/2024", 2, 8);
 
         // Start the Express server
         app.listen(port, () => {
@@ -151,4 +158,5 @@ async function initialize() {
     }
 }
 
+// start to run server
 initialize();
