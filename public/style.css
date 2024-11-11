@@ -1,0 +1,282 @@
+/*
+Name: Nguyen Giang
+Date: December 9, 2024
+This is the style.css page for my portfolio of web development work.
+*/
+
+body {
+    font-family: 'Lucida Console', monospace;
+    background-color: white;
+}
+
+.navig {
+    display: flex; /* Apply flexbox to the ul */
+    justify-content: flex-end; /* Align items to the right */
+    padding: 20px; /* Add some padding around the nav */
+    list-style-type: none; /* Remove bullet points */
+}
+
+.navig li {
+    margin-left: 10px; /* Add some space between items */
+}
+
+.navig a {
+    background-color: white; /* Set background color for the links */
+    color: black;
+    text-align: center;
+    padding: 15px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.navig a:hover {
+    background-color: black;
+    color: white;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 600px) {
+    .navig {
+        flex-direction: column; /* Stack items vertically on small screens */
+        align-items: center; /* Center items */
+    }
+    
+    .navig a {
+        padding: 10px; /* Adjust padding for smaller screens */
+        font-size: 15px; /* Reduce font size */
+    }
+}
+
+.container {
+    display: flex;
+    justify-content: space-evenly; /* Ensures space between bio and picture */
+    align-items: center; /* Vertically align content */
+    padding: 10px;
+}
+
+
+.bio {
+    line-height: 2.5;
+    color: black;
+    background-color: white;
+    padding: 10px; /* Add space between bio and picture */
+    margin-left: 50px;
+    margin-right: 80px;
+    font-size: 20px;
+    font-family: cursive;
+}
+
+.container2 {
+    display: flex;
+    padding: 10px;
+    box-sizing: border-box; /* Ensures padding doesn't affect the width */
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 10px auto;
+}
+
+
+.container3 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    line-height: 1.5;
+    
+
+
+}
+
+.container3 div {
+    text-align: center;
+}
+
+.join-button {
+    border-radius: 30px;
+    background-color: white;
+    color: black;
+    padding: 15px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 10px auto;
+    font-size: 18px;
+    width: fit-content;
+}
+
+.join-button:hover {
+    background-color: #5865F2;
+    color: white;
+}
+
+
+.addBorder {
+    border: black solid 10px;
+}
+
+#myButton{
+    font-size: 1em;    
+}
+
+#blackIntro {
+    margin: 10px auto; 
+    margin-top: 50px;  
+    height: auto;
+    padding: 100px; 
+    font-family: 'Roboto', sans-serif;
+    background-color: black;
+    color: white;
+
+
+}
+
+#ThinkOutSide{
+    padding: 400px;
+}
+
+
+.contactBlock {
+    margin: 10px auto;  
+    margin-top: 200px;
+    margin-bottom: 300px;            
+    background-color: white; 
+    padding-left: 300px; 
+    padding-right: 300px; 
+    padding-top: 50px;
+    padding-bottom: 50px;
+    color: black;
+    border: black solid 2px;
+}
+
+.breakbox {
+    color: black; 
+    border: 3px solid black; /* Keep the border width the same */
+    width: fit-content; 
+    margin: 10px auto; 
+    padding: 20px;
+}
+
+.breakbox:hover {
+    border-color: white; 
+}
+
+.breakbox a{
+    color: black;
+    text-align: center;
+    text-decoration: none;
+}
+
+.bio a {
+    background-color: black; /* Set background color for the links */
+    color: white;
+    text-align: center;
+    padding: 15px;
+    text-decoration: none;
+}
+
+.bio a:hover {
+    background-color: #0077B5;
+    color: white;
+}
+
+
+.imageProfile {
+    background-color: white;
+    margin-right: 50px;
+    margin-top: 100px;
+
+}
+
+.imageProfile a {
+    display: inline-block; /* Ensure the anchor tag wraps tightly around the image */
+    border-radius: 50%; /* Ensure the clickable area is circular */
+    overflow: hidden; /* Hide overflow to keep the circular shape */
+}
+
+.imageProfile > img {
+    width: 655px;
+    height: 840px;
+    border-radius: 50%;
+
+}
+
+#Resume {
+    background-color: white;
+    color: black;
+    padding: 15px; /* Adjusted padding for even spacing */
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box; /* Ensures padding and border do not cause overflow */
+    width: 800px; /* Ensure it takes the full width of its grid or container */
+    justify-content: center;
+    margin: 10px auto;
+    border: black solid 2px;
+    
+}
+
+
+#Resume p{
+    padding-left: 20px;
+    padding-right: 10px;
+    line-height: 1.5;
+}
+
+
+#content1 {
+    display: flex;
+    justify-content: flex-start; /* Center the image horizontally */
+    font-size: 14pt;
+    padding: 100px;
+    margin: 10px auto;
+    flex-direction: column;
+    line-height: 2;
+    font-family: cursive;
+}
+
+.container4 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin: 10px auto;
+
+}
+
+.blog{
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 60px;
+    margin: 10px auto;
+    width: 1000px;
+    line-height: 2;
+    font-size: 14pt;
+
+}
+
+.blog-title{
+    background-color: black; 
+    color: white; 
+    padding: 10px; 
+    text-align: center;
+}
+
+#creativeBox {
+    display: block;
+    font-size: 10pt;
+    padding: 10px;
+    margin: 10px auto;
+    text-align: center;
+    width: fit-content;
+    border: black solid 5px;
+    
+}
+
+
+
+footer {
+    background-color: #000000; /* Black background for footer */
+    padding: 1px;
+    text-align: center; /* Center text */
+    position: relative; /* Position relative for better control */
+    bottom: 0; /* Align to bottom */
+    width: 100%; /* Full width */
+    color: white;
+}
+
+
