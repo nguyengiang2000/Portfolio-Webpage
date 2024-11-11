@@ -102,14 +102,32 @@ app.get("/allbooks/author=:author_id", async (req, res) => {
 });
 
 // add new book to database
-async function addNewBook(title, publishedDate, authorId) {
+async function addNewBook(title, publishedDate, authorId, characterId) {
     const db = await getDBConnection();
     try {
+        // Author and Character IDs can't be null for a book
+        if (!authorId || !characterId) {
+            throw new Error("Both author_id and character_id are required and cannot be null.");
+        }
+
+        //  check if these IDs exist in their tables ( 1 mean exist )
+        const authorExists = await db.get("SELECT 1 FROM author WHERE author_id = ?", [authorId]);
+        const characterExists = await db.get("SELECT 1 FROM character WHERE character_id = ?", [characterId]);
+
+        if (!authorExists) {
+            throw new Error(`Author with ID ${authorId} does not exist.`);
+        }
+
+        if (!characterExists) {
+            throw new Error(`Character with ID ${characterId} does not exist.`);
+        }
+
+
         // Insert new book into the Books table
         const result = await db.run(`
-            INSERT INTO book (title, publish_date, author_id) 
-            VALUES (?, ?, ?)
-        `, [title, publishedDate, authorId]);
+            INSERT INTO book (title, publish_date, author_id, character_id) 
+            VALUES (?, ?, ?, ?)
+        `, [title, publishedDate, authorId, characterId]);
 
         return result.lastID; 
     } catch (error) {
@@ -122,7 +140,7 @@ async function addNewBook(title, publishedDate, authorId) {
 async function initialize() {
     try {
         // Add a new book to the database
-        await addNewBook("New Book", "11/11/2024", 1);
+        await addNewBook("New Book", "11/11/2024", 1, 3);
 
         // Start the Express server
         app.listen(port, () => {
