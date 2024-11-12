@@ -23,8 +23,14 @@ async function getDBConnection() {
     return db;
 }
 
-// Show all books with their author names and characters
-app.get("/allbooks", async (req, res) => {
+/**
+ * GET endpoint to show all books with their author names and characters.
+ * @route GET /api
+ * @param {express.Request} req - The request object.
+ * @param {express.Response} res - The response object.
+ */
+
+app.get("/api", async (req, res) => {
     try {
         // Establish a database connection
         const db = await getDBConnection();
@@ -62,8 +68,14 @@ app.get("/allbooks", async (req, res) => {
     }
 });
 
-// Show all books for a specific author by author_id
-app.get("/allbooks/author=:author_id", async (req, res) => {
+/**
+ * GET endpoint to show all books for a specific author by author_id.
+ * @route GET /api/author=:author_id
+ * @param {express.Request} req - The request object, with author_id as a URL parameter.
+ * @param {express.Response} res - The response object.
+ */
+
+app.get("/api/author=:author_id", async (req, res) => {
     const { author_id } = req.params;
 
     if (!author_id) {
@@ -92,14 +104,6 @@ app.get("/allbooks/author=:author_id", async (req, res) => {
             return res.status(404).send("No books found for the given author or the given author does not exist.");
         }
 
-        // formatting the response text
-        let responseText = `Books by Author ID ${author_id}:\n`;
-        books.forEach((book) => {
-            responseText += `Published Date: ${book.publish_date}\n`;
-            responseText += `Author Name: ${book.author_name}\n`;
-            responseText += "\n";
-        });
-
         // Send the response as json
         res.json(books);
     } catch (error) {
@@ -108,13 +112,26 @@ app.get("/allbooks/author=:author_id", async (req, res) => {
     }
 });
 
+/**
+ * Adds a new book to the database.
+ * @async
+ * @function addNewBook
+ * @param {string} title - The title of the book.
+ * @param {string} publishedDate - The published date of the book.
+ * @param {number} authorId - The author ID associated with the book.
+ * @param {number} characterId - The character ID associated with the book.
+ * @param {number} publisherId - The publisher ID associated with the book.
+ * @throws Will throw an error if any required ID does not exist.
+ * @returns {Promise<number>} The ID of the newly added book.
+ */
+
 // add new book to database
 async function addNewBook(title, publishedDate, authorId, characterId, publisherId) {
     const db = await getDBConnection();
     try {
         // Author and Character, Publisher IDs can't be null for new book
         if (!authorId || !characterId || !publisherId) {
-            throw new Error("Both author_id and character_id are required and cannot be null.");
+            throw new Error("author_id and character_id, publisher_id are required and cannot be null.");
         }
 
         //  check if these IDs exist in their respective tables ( 1 mean exist )
@@ -149,7 +166,12 @@ async function addNewBook(title, publishedDate, authorId, characterId, publisher
     }
 }
 
-//server start in an async function
+/**
+ * Initializes the server and adds a new book as a sample entry.
+ * @async
+ * @function initialize
+ */
+
 async function initialize() {
     try {
         // Add a new book to the database
