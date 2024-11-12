@@ -267,6 +267,34 @@ body {
     
 }
 
+#fetchDatabaseBox{
+    padding: 10px;
+    text-align: center;
+}
+
+#fetchDatabaseButton{
+    font-size: 15pt;
+    padding: 10px;
+    border-radius: 50px;
+
+}
+
+#books-container{
+    font-size: 12pt;
+    padding: 30px;
+    text-align: center;
+    width: fit-content;
+    margin: 10px auto;
+
+}
+
+.border-library{
+    color: white;
+    background-color: black;
+    border-radius: 50px;
+
+
+}
 
 
 footer {

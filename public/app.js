@@ -10,9 +10,11 @@
 const sqlite3 = require("sqlite3");
 const sqlite = require("sqlite");
 const express = require("express");
+const cors = require("cors");
 
 const app = express();
 const port = 8000;
+app.use(cors());
 
 // Function to establish a connection to the SQLite database
 async function getDBConnection() {

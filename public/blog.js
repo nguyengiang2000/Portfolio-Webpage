@@ -18,7 +18,6 @@ window.addEventListener('load', function() {
  */
     async function getRandomData() {
         try {
-            const userNameElement = document.getElementById("RandomData");
             const response = await fetch("https://randomuser.me/api/?results=1&nat=US");
 
             // statusCheck
@@ -124,9 +123,40 @@ window.addEventListener('load', function() {
         return res;
     }
 
+  
+
+/**
+ * Function to fetch all books and display them
+ * This function uses the "Get Library Database" element to display the information from Book Database such as Title, Author's name, Character's name .
+ * @async
+ * @function statusCheck
+ * @param {Response} res - The fetch API response object to check.
+ * @throws {Error} Throws an error if the response status is not OK.
+ */
+    
+async function fetchBooks() {
+    try {
+        const response = await fetch("http://localhost:8000/api"); 
+        await statusCheck(response);
+        const data = await response.text();
+        const element = document.getElementById("books-container");
+        element.innerText = data;
+        element.classList.add("border-library");
+    } catch (error) {
+        console.error("Error fetching books:", error);
+    }
+}
+
     const fetchDataButton = document.getElementById("generateButton");
     const deleteDataButton = document.getElementById("deleteButton");
+    const fetchDatabaseButton = document.getElementById("fetchDatabaseButton");
+
 
     fetchDataButton.onclick = getRandomData;
     deleteDataButton.onclick = deleteContent;
+    fetchDatabaseButton.onclick = fetchBooks;
 });
+
+
+
+
