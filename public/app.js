@@ -177,7 +177,7 @@ async function addNewBook(title, publishedDate, authorId, characterId, publisher
 async function initialize() {
     try {
         // Add a new book to the database
-        await addNewBook("Demo Just Added", "12/10/2024", 2, 5, 5);
+       // await addNewBook("Demo Just Added", "12/10/2024", 2, 5, 5);
 
         // Start the Express server
         app.listen(port, () => {
