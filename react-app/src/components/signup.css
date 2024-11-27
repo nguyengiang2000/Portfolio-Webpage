@@ -1,38 +1,36 @@
-.loginPanel {
+.signupDiv {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center; 
+    align-items: center;
     border: 2px solid black;
     padding: 40px;
     margin: 100px auto;
-    width: 400px;
-    gap: 15px; 
+    width: 100%;
+    max-width: 400px;
+    gap: 15px;
     background-color: #f9f9f9;
     border-radius: 10px;
 }
 
-.loginPanel input {
+.signupDiv input {
     padding: 10px;
-    width: 380px;
+    width: 400px;
     border: 1px solid #ccc;
-    margin-bottom: 10px; 
+    margin: 10px auto;
 }
 
-.loginPanel button {
-    padding: 10px;
+.signupDiv button {
+    padding: 10px 20px;
     background-color: #007bff;
     color: white;
     border: none;
     border-radius: 5px;
-    margin: 10px auto;
-    width: 100%;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    width: 100%;
 }
 
-.loginPanel button:hover {
+.signupDiv button:hover {
     background-color: #0056b3;
 }
-
-

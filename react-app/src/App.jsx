@@ -12,17 +12,18 @@ import app from "./firebase";
 
 function App() {
   const [isLogin, setisLogin] = useState(false);
+  const [currentUser, setCurrentUser] = useState("");
 
   return (
     <Router>
-      <Nav isLogin={isLogin} setisLogin={setisLogin} />
+      <Nav isLogin={isLogin} setisLogin={setisLogin} setCurrentUser={setCurrentUser} />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home currentUser={currentUser}/>} />
         <Route path="/about" element={<About />} />
-        <Route path="/login" element={<Login setisLogin={setisLogin} />} />
-        <Route path="/signup" element={ <Signup />}/>
+        <Route path="/login" element={<Login setisLogin={setisLogin} setCurrentUser={setCurrentUser} />} />
+        <Route path="/signup" element={ <Signup setisLogin={setisLogin} setCurrentUser={setCurrentUser} />}/>
         <Route path="/help" element={<Help/>}/>
-        <Route path="/newpost" element={ <NewPost/>}/>
+        <Route path="/newpost" element={ <NewPost currentUser={currentUser}/>}/>
       </Routes>
     </Router>
   );

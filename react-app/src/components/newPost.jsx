@@ -3,11 +3,11 @@ import { getDatabase, ref, push, set } from "firebase/database";
 import app from "../firebase";
 import './newPost.css';
 
-function NewPost() {
+function NewPost({currentUser}) {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [date, setDate] = useState(new Date().toISOString().slice(0, 10));
-
+    const curentAuthor = currentUser;
   const addNewPost = async (e) => {
     e.preventDefault(); // Prevent the default form submission behavior
 
@@ -17,6 +17,7 @@ function NewPost() {
 
     try {
       await set(newDocRef, {
+        author: curentAuthor,
         title: title,
         content: content,
         date: date

@@ -2,11 +2,12 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom'; 
 import './nav.css';
 
-function Nav({ isLogin, setisLogin }) {
+function Nav({ isLogin, setisLogin, setCurrentUser }) {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    setisLogin(false);  
+    setisLogin(false); 
+    setCurrentUser("");
     navigate('/'); 
   };
 
