@@ -8,6 +8,7 @@ function Nav({ isLogin, setisLogin, setCurrentUser }) {
   const handleLogout = () => {
     setisLogin(false); 
     setCurrentUser("");
+    alert("You have been logged out!")
     navigate('/'); 
   };
 
