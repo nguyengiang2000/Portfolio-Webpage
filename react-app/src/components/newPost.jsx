@@ -3,33 +3,37 @@ import { getDatabase, ref, push, set } from "firebase/database";
 import app from "../firebase";
 import './newPost.css';
 
-function NewPost({currentUser}) {
+function NewPost({ currentUser }) {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [date, setDate] = useState(new Date().toISOString().slice(0, 10));
-    const curentAuthor = currentUser;
+  // set the current user as author of their post
+  const currentAuthor = currentUser;
+
   const addNewPost = async (e) => {
-    e.preventDefault(); // Prevent the default form submission behavior
+    e.preventDefault();
 
     const db = getDatabase(app);
     const newDocRef = push(ref(db, "posts"));
-    setDate(new Date().toISOString().slice(0, 10));
+    // store date for the post
+    const currentDate = new Date().toISOString().slice(0, 10);
 
     try {
       await set(newDocRef, {
-        author: curentAuthor,
+        author: currentAuthor,
         title: title,
         content: content,
-        date: date
+        date: currentDate
       });
       alert("Post successfully created!");
     } catch (error) {
       alert("Error: " + error.message);
     }
+    // clear textbox for Title and Content after postes!
     setTitle("");
     setContent("");
   };
 
+  // Form for Post upload
   return (
     <div className='postDiv'>
       <form onSubmit={addNewPost}>
