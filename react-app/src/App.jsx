@@ -7,24 +7,50 @@ import Login from './components/login';
 import Signup from './components/signup';
 import Help from './components/help';
 import NewPost from './components/newPost';
-import { getDatabase, ref, push, set} from "firebase/database";
+import { getDatabase, ref, push, set } from "firebase/database";
 import app from "./firebase";
 
 function App() {
-  const [isLogin, setisLogin] = useState(false);
-  const [currentUser, setCurrentUser] = useState("");
+
+  // Store user and status of login
+  const storedLoginState = localStorage.getItem('isLogin') === 'true';
+  const storedUser = localStorage.getItem('currentUser');
+
+  const [isLogin, setIsLogin] = useState(storedLoginState); 
+  const [currentUser, setCurrentUser] = useState(storedUser || "");
+
+  // Logout function: clears localStorage and resets the state
+  const handleLogout = () => {
+    setIsLogin(false);
+    setCurrentUser("");
+    localStorage.removeItem('isLogin');
+    localStorage.removeItem('currentUser');
+  };
 
   return (
     <Router>
-      <Nav isLogin={isLogin} setisLogin={setisLogin} setCurrentUser={setCurrentUser} />
+      <Nav 
+        isLogin={isLogin} 
+        setIsLogin={setIsLogin} 
+        setCurrentUser={setCurrentUser} 
+        handleLogout={handleLogout}
+      />
       <Routes>
-        <Route path="/" element={<Home currentUser={currentUser}/>} />
+        <Route path="/" element={<Home currentUser={currentUser} />} />
         <Route path="/about" element={<About />} />
-        <Route path="/login" element={<Login setisLogin={setisLogin} setCurrentUser={setCurrentUser} />} />
-        <Route path="/signup" element={ <Signup setisLogin={setisLogin} setCurrentUser={setCurrentUser} />}/>
-        <Route path="/help" element={<Help/>}/>
-        <Route   path="/newpost" 
-          element={isLogin ? <NewPost currentUser={currentUser}/> : <Navigate to="/login" />}/>
+        <Route 
+          path="/login" 
+          element={<Login setIsLogin={setIsLogin} setCurrentUser={setCurrentUser} />} 
+        />
+        <Route 
+          path="/signup" 
+          element={<Signup setIsLogin={setIsLogin} setCurrentUser={setCurrentUser} />} 
+        />
+        <Route path="/help" element={<Help />} />
+        <Route 
+          path="/newpost" 
+          element={isLogin ? <NewPost currentUser={currentUser} /> : <Navigate to="/login" />} 
+        />
       </Routes>
     </Router>
   );

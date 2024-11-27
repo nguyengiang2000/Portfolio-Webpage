@@ -2,17 +2,10 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom'; 
 import './nav.css';
 
-function Nav({ isLogin, setisLogin, setCurrentUser }) {
+function nav({ isLogin, setIsLogin, setCurrentUser, handleLogout }) {
   const navigate = useNavigate();
 
-  const handleLogout = () => {
-    setisLogin(false); 
-    setCurrentUser("");
-    alert("You have been logged out!")
-    navigate('/'); 
-  };
-
-  const handleAddPost = () =>{
+  const handleAddPost = () => {
     navigate('/newpost');
   };
 
@@ -22,9 +15,9 @@ function Nav({ isLogin, setisLogin, setCurrentUser }) {
         <Link to="/">Home</Link>
         <Link to="/about">About</Link>
         {isLogin ? (
-            <>
-          <button onClick={handleAddPost} className="navButton">Create New Post</button>
-          <button onClick={handleLogout} className="navButton">Logout</button>
+          <>
+            <button onClick={handleAddPost} className="navButton">Create New Post</button>
+            <button onClick={handleLogout} className="navButton">Logout</button>
           </>
         ) : (
           <>
@@ -38,4 +31,4 @@ function Nav({ isLogin, setisLogin, setCurrentUser }) {
   );
 }
 
-export default Nav;
+export default nav;

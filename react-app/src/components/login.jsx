@@ -4,8 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import { getDatabase, ref, get } from "firebase/database";
 import app from "../firebase";
 import md5 from 'md5';
+import PropTypes from 'prop-types';
 
-function login({ setisLogin, setCurrentUser }) {
+function login({ setIsLogin, setCurrentUser }) {
   const usernameRef = useRef();
   const passwordRef = useRef();
   const navigate = useNavigate();
@@ -27,19 +28,24 @@ function login({ setisLogin, setCurrentUser }) {
       const user = childSnapshot.val();
       if (user.username === username && user.password === hashedPassword) {
         userFound = true;
-        setisLogin(true);
+        setIsLogin(true);
         setCurrentUser(user.author);
+
+        localStorage.setItem('isLogin', 'true');
+        localStorage.setItem('currentUser', user.author);
+
         return;
       }
     });
 
     if (userFound) {
       alert("Login successful!");
-      navigate('/');
+      navigate('/'); 
     } else {
       alert("Invalid username or password.");
     }
 
+    // Clear the input fields
     usernameRef.current.value = "";
     passwordRef.current.value = "";
   };
@@ -61,5 +67,10 @@ function login({ setisLogin, setCurrentUser }) {
     </div>
   );
 }
+
+login.propTypes = {
+  setIsLogin: PropTypes.func.isRequired,
+  setCurrentUser: PropTypes.func.isRequired,
+};
 
 export default login;

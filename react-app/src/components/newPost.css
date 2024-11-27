@@ -69,13 +69,13 @@
   }
   
   .postCard h3 {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     font-weight: bold;
     margin-bottom: 10px;
   }
 
   .postCard h5 {
-    font-size: 1rem;
+    font-size: 1.5rem;
     font-weight: bold;
     margin-bottom: 10px;
   }
@@ -85,16 +85,5 @@
     color: #333;
     line-height: 1.5;
     text-overflow: ellipsis;
-  }
-  
-  @media (max-width: 768px) {
-    .postCards {
-      margin-left: 20px;
-      width: 100%;
-    }
-  
-    .postCard {
-      width: 100%;
-    }
   }
   

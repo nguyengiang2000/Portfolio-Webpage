@@ -4,6 +4,8 @@ import { getDatabase, ref, push, set } from "firebase/database";
 import app from "../firebase";
 import { useNavigate } from 'react-router-dom';
 import md5 from 'md5';
+import PropTypes from 'prop-types';
+
 
 function signup({ setisLogin, setCurrentUser }) {
   const usernameRef = useRef(null); 
@@ -95,5 +97,9 @@ function signup({ setisLogin, setCurrentUser }) {
     </>
   );
 }
+signup.propTypes = {
+    setisLogin: PropTypes.func.isRequired,
+    setCurrentUser: PropTypes.func.isRequired,
+};
 
 export default signup;
