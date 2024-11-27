@@ -1,0 +1,100 @@
+/* Container for the New Post Form */
+.postDiv {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid black;
+    padding: 20px;
+    margin-top: 100px;
+    margin-left: 530px;
+    width: 300px;
+    gap: 10px;
+    background-color: grey;
+  }
+  
+  /* Styling for the input field */
+  .postDiv input[type="text"] {
+    padding: 10px;
+    margin: 10px auto;
+    width: fit-content;
+    border: 1px solid #ccc;
+  }
+  
+  /* Styling for the textarea field */
+  .postDiv textarea {
+    width: 100%;
+    resize: none;
+    height: 100px;
+  }
+  
+  /* Styling for the button */
+  .postDiv button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .postDiv button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Styles for the Post Cards */
+  .postCards {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 50px;
+    margin-left: 150px;
+    width: 1000px;
+    height: 300vh;
+  }
+  
+  .postCard {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .postCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  .postCard h3 {
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .postCard h5 {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .postCard p {
+    font-size: 1.2rem;
+    color: #333;
+    line-height: 1.5;
+    text-overflow: ellipsis;
+  }
+  
+  @media (max-width: 768px) {
+    .postCards {
+      margin-left: 20px;
+      width: 100%;
+    }
+  
+    .postCard {
+      width: 100%;
+    }
+  }
+  
