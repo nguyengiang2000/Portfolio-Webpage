@@ -9,6 +9,9 @@ function nav({ isLogin, setIsLogin, setCurrentUser, handleLogout }) {
     navigate('/newpost');
   };
 
+  // after login, show Create New Post butotn and Logout
+  // before login, show Login and Sign Up button
+  // Home, About, Help would alwasy be shown
   return (
     <div className="divBar">
       <nav>

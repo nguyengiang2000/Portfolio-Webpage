@@ -69,13 +69,14 @@
   }
   
   .postCard h3 {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-weight: bold;
     margin-bottom: 10px;
+    color: #0056b3;
   }
 
   .postCard h5 {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: bold;
     margin-bottom: 10px;
   }

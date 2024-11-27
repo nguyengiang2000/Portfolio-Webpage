@@ -16,6 +16,7 @@ function App() {
   const storedLoginState = localStorage.getItem('isLogin') === 'true';
   const storedUser = localStorage.getItem('currentUser');
 
+  // set isLogin and CurrentUser with LocalStorage
   const [isLogin, setIsLogin] = useState(storedLoginState); 
   const [currentUser, setCurrentUser] = useState(storedUser || "");
 

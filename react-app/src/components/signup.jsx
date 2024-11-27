@@ -7,9 +7,10 @@ import md5 from 'md5';
 import PropTypes from 'prop-types';
 
 
-function signup({ setisLogin, setCurrentUser }) {
+function signup({ setIsLogin, setCurrentUser }) {
   const usernameRef = useRef(null); 
   const passwordRef = useRef(null);
+  // type password again
   const password2Ref = useRef(null);
   const authorRef = useRef(null); 
   const emailRef = useRef(null); 
@@ -23,7 +24,7 @@ function signup({ setisLogin, setCurrentUser }) {
     const password2 = password2Ref.current.value;
     const email = emailRef.current.value;
     const author = authorRef.current.value;
-
+    // check password if they are same
     if (password !== password2) {
       alert("Passwords do not match. Please re-enter.");
       return;
@@ -41,14 +42,17 @@ function signup({ setisLogin, setCurrentUser }) {
         email: email
       });
       alert("Account successfully created!");
-      setisLogin(true);
+      setIsLogin(true);
       setCurrentUser(author);
+      //navigate user to home page
       navigate('/'); 
     } catch (error) {
       alert("Error: " + error.message);
+      // navigate user to sign up page
       navigate('/signup'); 
     }
 
+    // clear the sign up form
     authorRef.current.value = "";
     emailRef.current.value = "";
     usernameRef.current.value = "";
@@ -56,6 +60,7 @@ function signup({ setisLogin, setCurrentUser }) {
     password2Ref.current.value = "";
   };
 
+      //sign up form
   return (
     <>
       <div className="signupDiv">
@@ -88,7 +93,7 @@ function signup({ setisLogin, setCurrentUser }) {
           <input 
             ref={password2Ref} 
             type="password" 
-            placeholder="Retype Password" 
+            placeholder="type Password again" 
             required
           />
           <button type="submit">Sign Up</button>
@@ -97,8 +102,9 @@ function signup({ setisLogin, setCurrentUser }) {
     </>
   );
 }
+// propTypes for signup
 signup.propTypes = {
-    setisLogin: PropTypes.func.isRequired,
+    setIsLogin: PropTypes.func.isRequired,
     setCurrentUser: PropTypes.func.isRequired,
 };
 
