@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom'; 
 import './nav.css';
 
-function nav({ isLogin, setIsLogin, setCurrentUser, handleLogout }) {
+function nav({ isLogin, handleLogout }) {
   const navigate = useNavigate();
 
   const handleAddPost = () => {
