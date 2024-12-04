@@ -32,8 +32,6 @@ function App() {
     <Router>
       <Nav 
         isLogin={isLogin} 
-        setIsLogin={setIsLogin} 
-        setCurrentUser={setCurrentUser} 
         handleLogout={handleLogout}
       />
       <Routes>
